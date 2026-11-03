@@ -1,21 +1,29 @@
-import { useState, useEffect } from "react";
-import PageTemplate from '../components/templateMovieListPage';
+
+import { useQuery } from "@tanstack/react-query";
+import Spinner from "../components/spinner";
+import PageTemplate from "../components/templateMovieListPage";
 import { getTopRatedMovies } from "../api/tmdb-api";
 import AddToPlaylistIcon from "../components/cardIcons/addToPlaylist";
 
-
 const TopRatedPage = () => {
-  const [movies, setMovies] = useState([]);
+  const { data, error, isPending, isError } = useQuery({
+    queryKey: ["topRated"],
+    queryFn: getTopRatedMovies,
+  });
 
- useEffect(() => {
-    getTopRatedMovies().then(movies => {
-      setMovies(movies);
-    });
-  }, []);
-  
+  if (isPending) {
+    return <Spinner />;
+  }
+
+  if (isError) {
+    return <h1>{error.message}</h1>;
+  }
+
+  const movies = data;
+
   return (
     <PageTemplate
-      title='Top Rated Movies'
+      title="Top Rated Movies"
       movies={movies}
       action={(movie) => {
         return <AddToPlaylistIcon movie={movie} />;
@@ -23,4 +31,5 @@ const TopRatedPage = () => {
     />
   );
 };
+
 export default TopRatedPage;
