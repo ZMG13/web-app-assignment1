@@ -9,6 +9,7 @@ import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
 import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews"
+import MovieRecommendations from "../movieRecommendations";
 
 
 const root = {
@@ -74,6 +75,11 @@ const [drawerOpen, setDrawerOpen] = useState(false);
           </li>
         ))}
       </Paper>
+
+      <Typography variant="h5" component="h3">
+       Recommended Movies
+      </Typography>
+      <MovieRecommendations movie={movie} />
       
       <Fab
         color="secondary"
