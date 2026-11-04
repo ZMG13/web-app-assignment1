@@ -31,7 +31,7 @@ export default function MovieCard({ movie, action }) {
   };
   
   return (
-    <Card>
+    <Card sx={{ borderRadius: 5 ,boxShadow: 5 }}>
       <CardHeader
         avatar={
           movie.favorite ? (

@@ -37,7 +37,7 @@ const [drawerOpen, setDrawerOpen] = useState(false);
 
       <Paper 
         component="ul" 
-        sx={{...root}}
+        sx={{...root, backgroundColor: "#a5a5a5"}}
       >
         <li>
           <Chip label="Genres" sx={{...chip}} color="primary" />
@@ -49,7 +49,7 @@ const [drawerOpen, setDrawerOpen] = useState(false);
         ))}
       </Paper>
       
-      <Paper component="ul" sx={{...root}}>
+      <Paper component="ul" sx={{...root, backgroundColor: "#a5a5a5"}}>
         <Chip icon={<AccessTimeIcon />} label={`${movie.runtime} min.`} />
         <Chip
           icon={<MonetizationIcon />}
@@ -64,7 +64,7 @@ const [drawerOpen, setDrawerOpen] = useState(false);
       
       <Paper 
         component="ul" 
-        sx={{...root}}
+        sx={{...root, backgroundColor: "#a5a5a5"}}
       >
         <li>
           <Chip label="Production Countries" sx={{...chip}} color="primary" />

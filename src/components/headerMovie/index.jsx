@@ -17,8 +17,7 @@ const MovieHeader = (props) => {
             display: "flex",
             justifyContent: "space-around",
             flexWrap: "wrap",
-            padding: 1.5,
-            margin: 0,
+            marginBottom: 1.5,
         }}
       >
       <IconButton aria-label="go back" onClick={() => navigate(-1)} >
