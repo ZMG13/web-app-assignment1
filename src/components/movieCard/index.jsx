@@ -14,6 +14,7 @@ import Grid from "@mui/material/Grid";
 import Avatar from '@mui/material/Avatar';
 import img from '../../images/film-poster-placeholder.png';
 import { Link } from "react-router";
+import Tooltip from "@mui/material/Tooltip";
 
 export default function MovieCard({ movie, action }) {
 
@@ -31,7 +32,8 @@ export default function MovieCard({ movie, action }) {
   };
   
   return (
-    <Card sx={{ borderRadius: 5 ,boxShadow: 5 }}>
+    <Card sx={{
+  borderRadius: 5,boxShadow: 5,transition: "transform 0.5s","&:hover": {transform: "translateY(-5px)"}}}>
       <CardHeader
         avatar={
           movie.favorite ? (
@@ -75,9 +77,11 @@ export default function MovieCard({ movie, action }) {
         {action(movie)}
         
         <Link to={`/movies/${movie.id}`}>
+        <Tooltip title="View movie details" arrow>
           <Button variant="outlined" size="medium" color="primary">
             More Info ...
           </Button>
+          </Tooltip>
         </Link>
         
       </CardActions>

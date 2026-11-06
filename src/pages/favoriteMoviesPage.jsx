@@ -6,6 +6,7 @@ import { getMovie } from "../api/tmdb-api";
 import Spinner from '../components/spinner';
 import RemoveFromFavorites from "../components/cardIcons/removeFromFavorites";
 import WriteReview from "../components/cardIcons/writeReview";
+import Alert from "@mui/material/Alert";
 
 const FavoriteMoviesPage = () => {
   const {favorites: movieIds } = useContext(MoviesContext);
@@ -26,6 +27,14 @@ const FavoriteMoviesPage = () => {
   if (isPending) {
     return <Spinner />;
   }
+
+  if (movieIds.length === 0) {
+  return (
+    <Alert severity="info" sx={{ margin: 2 }}>
+      Your favorites is empty, add some movies
+    </Alert>
+  );
+}
 
   const movies = favoriteMovieQueries.map((q) => {
     q.data.genre_ids = q.data.genres.map(g => g.id)
@@ -48,7 +57,6 @@ const FavoriteMoviesPage = () => {
       }}
     />
   );
-
-};
+  };
 
 export default FavoriteMoviesPage;

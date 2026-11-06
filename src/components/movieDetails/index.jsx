@@ -10,6 +10,7 @@ import Typography from "@mui/material/Typography";
 import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews"
 import MovieRecommendations from "../movieRecommendations";
+import Divider from "@mui/material/Divider";
 
 
 const root = {
@@ -75,7 +76,7 @@ const [drawerOpen, setDrawerOpen] = useState(false);
           </li>
         ))}
       </Paper>
-
+     <Divider sx={{ marginY: 3}} />
       <Typography variant="h5" component="h3">
        Recommended Movies
       </Typography>

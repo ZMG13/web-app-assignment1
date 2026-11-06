@@ -6,6 +6,7 @@ import { getMovie } from "../api/tmdb-api";
 import Spinner from '../components/spinner';
 import RemoveFromPlaylist from "../components/cardIcons/removeFromPlaylist";
 import WriteReview from "../components/cardIcons/writeReview";
+import Alert from "@mui/material/Alert";
 
 const PlaylistPage = () => {
   const {playlist: movieIds } = useContext(MoviesContext);
@@ -24,6 +25,14 @@ const PlaylistPage = () => {
   if (isPending) {
     return <Spinner />;
   }
+
+  if (movieIds.length === 0) {
+  return (
+    <Alert severity="info" sx={{ margin: 2 }}>
+      Your playlist is empty, add some movies
+    </Alert>
+  );
+}
 
   const movies = playlistMovieQueries.map((q) => {
     q.data.genre_ids = q.data.genres.map(g => g.id)
